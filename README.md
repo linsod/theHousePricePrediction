@@ -24,9 +24,29 @@ This is to see the correlation in our data, then we can objective to inference t
 ### 2. Look the high correlation with price in ```scatter```
 
 ```
-correlation_matrix = train.corr().round(2)
-sns.set(rc={'figure.figsize':(22,22)})
-# annot = True 讓我們可以把數字標進每個格子裡
-sns.heatmap(data = correlation_matrix, annot = True)
+k = 10 #number ofvariables for heatmap
+cols = corrmat.nlargest(k, 'price')['price'].index
+cm = np.corrcoef(train[cols].values.T)
+sns.set(font_scale=1.25)
+hm = sns.heatmap(cm, cbar=True, annot=True, square=True, fmt='.2f', annot_kws={'size': 10}, 
+yticklabels=cols.values, xticklabels=cols.values)
+plt.show()
 ```
-This is to see the correlation in our data, then we can objective to inference the relationship with every data.
+This is to see the high correlation with price, pick up 10 data out of this data.
+![GITHUB](pic/Price_realated.png)
+
+And sactter this 10 data with 
+```
+sns.set()
+cols = ['price', 'grade', 'sqft_living','sqft_above', 'bathrooms', 'lat', 'view', 'bedrooms', 'sqft_basement']
+sns.pairplot(train[cols], size = 2.5)
+plt.show();
+```
+View the linear relationship in the plot points.
+![GITHUB](pic/total.png)
+
+You already know some of the main features, and this specific scatter plot gives us a reasoning idea about the relationship between variables.<br>
+One, sqft_living sqft_above The picture between sqft_above is very deep.<br>
+Price and other intermediate scatter plots are also worth thinking about.<br>
+
+### 3. Adjust data distribution
