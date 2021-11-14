@@ -140,3 +140,46 @@ Take out the data of outliers and test the prediction can better or not.
 Forth, adjust the data.
 
 Cause I want to do the log to all data, I take absolute value to the ```long``` value.<br>
+Then adjust the data to linear as possible because this will training by recursive.
+
+## Step 2. Establish the model to predict the price.
+* 1. Create the model.
+* 2. Adjust the parameters.
+* 3. Draw the figure to observe.
+
+### 1. Create the model.
+
+Create a Sequential model and setting the compile parameters.<br>
+This data is simple, so this model doed not need more layers.<br>
+```
+model = Sequential(name='model-1')
+model.add(Dense(18, activation='relu', input_shape=(18,)))
+model.add(Dense(9))
+model.add(Dense(3, activation='softmax'))
+model.add(Dense(1))
+model.summary()
+model.compile(tf.keras.optimizers.Adam(0.001),loss=keras.losses.MeanSquaredError(),metrics=[keras.metrics.MeanAbsoluteError()])
+```
+### 2. Adjust the parameters.
+
+The optimization of a neural network can be defined as the following process: network prediction-calculation error-predicting again-trying to minimize this error-predicting again...-until the error no longer decreases.
+
+### 3. Draw the figure to observe.
+
+```
+plt.figure(figsize=(5, 5))
+plt.plot(history.history['mean_absolute_error'], label='train')
+plt.plot(history.history['val_mean_absolute_error'], label='validation')
+plt.ylim(0.1, 0.3)
+plt.title('Mean absolute error')
+plt.ylabel('metrics')
+plt.xlabel('epochs')
+plt.legend(loc='upper right')
+```
+![GITHUB](pic/mean absolute error.png) 
+Observe whether the data of the graph gradually converges. 
+
+## Step 3. Result.
+
+I test the score in the Kaggle.<br>
+The score sort from high to low is ```sklearn model``` > ```CNN model``` > ```relu model```
