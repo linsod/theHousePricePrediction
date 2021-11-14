@@ -19,3 +19,14 @@ sns.set(rc={'figure.figsize':(22,22)})
 sns.heatmap(data = correlation_matrix, annot = True)
 ```
 This is to see the correlation in our data, then we can objective to inference the relationship with every data.
+![GITHUB](pic/correlation_map.png)
+
+### 2. Look the high correlation with price in ```scatter```
+
+```
+correlation_matrix = train.corr().round(2)
+sns.set(rc={'figure.figsize':(22,22)})
+# annot = True 讓我們可以把數字標進每個格子裡
+sns.heatmap(data = correlation_matrix, annot = True)
+```
+This is to see the correlation in our data, then we can objective to inference the relationship with every data.
