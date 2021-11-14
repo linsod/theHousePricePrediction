@@ -18,7 +18,7 @@ sns.set(rc={'figure.figsize':(22,22)})
 # annot = True 讓我們可以把數字標進每個格子裡
 sns.heatmap(data = correlation_matrix, annot = True)
 ```
-This is to see the correlation in our data, then we can objective to inference the relationship with every data.
+This is to see the correlation in our data, then we can objective to inference about the relationship with every data.
 ![GITHUB](pic/correlation_map.png)
 
 ### 2. Look the high correlation with price in ```scatter```
@@ -50,3 +50,19 @@ One, sqft_living sqft_above The picture between sqft_above is very deep.<br>
 Price and other intermediate scatter plots are also worth thinking about.<br>
 
 ### 3. Adjust data distribution
+###### Test the function is important in the inference.
+
+First, look the data plot and draw the picture.
+```
+from scipy.stats import norm
+from scipy import stats
+sns.distplot(train['price'], fit = norm);
+fig = plt.figure()
+res = stats.probplot(train['price'], plot=plt)
+```
+![GITHUB](pic/分布.png) 
+![GITHUB](pic/plot.png)
+
+It can be seen that the housing price distribution is not normal, showing the peak value and positive skewness, 
+but it does not follow the diagonal. You can use logarithmic transformation to solve this problem.
+
