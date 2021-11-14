@@ -179,7 +179,7 @@ plt.legend(loc='upper right')
 ![GITHUB](pic/mean absolute error.png) 
 Observe whether the data of the graph gradually converges. 
 
-## Step 3. Result.
+## Step 3. Discusss.
 
 I test the score in the Kaggle.<br>
 The score sort from high to low is ```sklearn model``` > ```CNN model``` > ```relu model```
