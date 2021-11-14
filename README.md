@@ -64,7 +64,7 @@ res = stats.probplot(train['price'], plot=plt)
 ![GITHUB](pic/plot.png)
 
 It can be seen that the housing price distribution is not normal, showing the peak value and positive skewness, 
-but it does not follow the diagonal.We can use logarithmic transformation ```train['price']= np.log(train['price'])``` to solve this problem.
+but it does not follow the diagonal.We can use logarithmic transformation ```train['price']= np.log(train['price'])``` to solve this problem.<br>
 ![GITHUB](pic/分布_調整.png) 
 ![GITHUB](pic/plot_fix.png)
 
@@ -162,7 +162,7 @@ model.compile(tf.keras.optimizers.Adam(0.001),loss=keras.losses.MeanSquaredError
 ```
 ### 2. Adjust the parameters.
 
-The optimization of a neural network can be defined as the following process: network prediction-calculation error-predicting again-trying to minimize this error-predicting again...-until the error no longer decreases.
+The optimization of a neural network can be defined as the following process: network prediction-calculation error-predicting again-trying to minimize this error-predicting again...-until the error no longer decreases.<br>
 
 ### 3. Draw the figure to observe.
 
@@ -177,7 +177,7 @@ plt.xlabel('epochs')
 plt.legend(loc='upper right')
 ```
 ![GITHUB](pic/mean absolute error.png) 
-Observe whether the data of the graph gradually converges. 
+Observe whether the data of the graph gradually converges.<br>
 
 ## Step 3. Discusss.
 
